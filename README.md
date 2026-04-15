@@ -3,7 +3,7 @@ Causal mediation analysis of clinical and psychological predictors of Parkinson'
 # Clinical Predictors of Parkinson’s Disease Severity: A Causal Mediation Analysis
 
 ## Overview
-This repository contains a rigorous statistical analysis of a clinical dataset comprising diagnosed Parkinson's patients ($N = 1304$). The objective of this project is twofold:
+This repository contains a statistical analysis of a clinical dataset comprising diagnosed Parkinson's patients ($N = 1304$). The objective of this project is twofold:
 1. To evaluate the predictive power of baseline physiological metrics and psychological indicators on motor severity (UPDRS) and cognitive impairment (MoCA).
 2. To explicitly model the causal pathways between chronic stress (proxied by sleep disorders), clinical depression, and motor severity using a formal mediation framework.
 
