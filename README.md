@@ -37,6 +37,10 @@ $$Y = \beta_0 + \beta_1 X + \beta_2 M + \beta_3 C + \epsilon_2$$
 
 The **Average Causal Mediation Effect (ACME)** (the indirect effect via depression) and the **Average Direct Effect (ADE)** (the direct effect of sleep disorders on UPDRS) were estimated using Monte Carlo bootstrapping with 500 simulations to generate robust nonparametric confidence intervals.
 
+## Key Visualizations
+![UPDRS by Depression Status](severity_by_depression.png)
+*Boxplot demonstrating the distribution of UPDRS severity scores across patients presenting with and without clinical depression.*
+
 ## Results
 
 ### Predictive Modelling
