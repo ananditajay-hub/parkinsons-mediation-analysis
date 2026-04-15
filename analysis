@@ -1,0 +1,44 @@
+
+# 1. LOAD LIBRARIES
+library(mediation)
+library(dplyr)
+library(tidyr)
+
+# Load the data
+df <- read.csv("parkinsons_disease_data.csv")
+
+# 2. PARANOID DATA PREP (Fixing the xhat error)
+patients_df <- df %>% 
+  filter(Diagnosis == 1) %>%
+  mutate(
+    # Force both variables to be pure numbers (0 and 1), stripping any factor metadata
+    SleepDisorders = as.numeric(as.character(SleepDisorders)),
+    Depression = as.numeric(as.character(Depression))
+  ) %>%
+  # Drop missing data
+  drop_na(SleepDisorders, Depression, UPDRS, Age, BMI)
+
+
+# 3. RUN THE MODELS (Using pure numeric data)
+# Mediator Model (Path A: Sleep -> Depression)
+fit.mediator <- glm(Depression ~ SleepDisorders + Age + BMI, 
+                    data = patients_df, family = binomial("logit"))
+
+# Outcome Model (Path B and C: Sleep & Depression -> Severity)
+fit.outcome <- lm(UPDRS ~ SleepDisorders + Depression + Age + BMI, 
+                  data = patients_df)
+
+# 4. CAUSAL MEDIATION ANALYSIS
+set.seed(2026) 
+
+# Run the simulations with explicit control/treatment values defined
+med.out <- mediate(fit.mediator, fit.outcome, 
+                   treat = "SleepDisorders", 
+                   mediator = "Depression", 
+                   control.value = 0,  # Explicitly tell R: 0 means no sleep disorder
+                   treat.value = 1,    # Explicitly tell R: 1 means sleep disorder
+                   boot = TRUE, 
+                   sims = 500)
+
+# Print the final results
+summary(med.out)
