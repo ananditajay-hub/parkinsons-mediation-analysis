@@ -55,7 +55,8 @@ These findings highlight the importance of distinguishing between correlation an
 1. **Cross-Sectional Constraints:** The data represents a single cross-sectional snapshot. True causal inference is limited without longitudinal progression markers.
 2. **Unmeasured Confounding:** The low $R^2$ values and the mathematically counterintuitive ADE direction strongly suggest the presence of unobserved confounders. UPDRS severity and cognitive decline are likely driven by higher-dimensional biological realities (e.g., genetic architecture, eQTLs, or transcriptomic profiles) not captured in standard physiological exams.
 3. **Future Work:** This highlights the necessity of integrating multi-omics data with clinical metrics to uncover genuine mechanistic pathways in neurodegenerative diseases.
-4. ## Key Takeaway
+
+## Key Takeaway
 
 This analysis demonstrates how statistical modelling alone may be insufficient to uncover disease mechanisms without accounting for latent biological complexity.
 
