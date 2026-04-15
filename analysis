@@ -42,3 +42,12 @@ med.out <- mediate(fit.mediator, fit.outcome,
 
 # Print the final results
 summary(med.out)
+library(ggplot2)
+
+stress_plot <- ggplot(patients_df, aes(x = as.factor(Depression), y = UPDRS, fill = as.factor(Depression))) +
+  geom_boxplot(alpha = 0.7) +
+  scale_fill_manual(values = c("#5BBCD6", "#F98400"), labels = c("No", "Yes")) +
+  labs(title = "Parkinson's Severity by Depression Status", x = "Depression", y = "UPDRS Score") +
+  theme_minimal() + theme(legend.position = "none")
+
+ggsave("severity_by_depression.png", plot = stress_plot, width = 8, height = 5)
